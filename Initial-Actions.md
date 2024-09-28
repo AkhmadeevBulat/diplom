@@ -351,4 +351,6 @@ yandex_compute_instance.vm-1: Destruction complete after 1m18s
 Destroy complete! Resources: 1 destroyed.
 ```
 
+### Следующий раздел: [Сайт](Site.md)
 
+### [Главная](README.md)
