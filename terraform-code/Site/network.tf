@@ -41,6 +41,7 @@ resource "yandex_vpc_subnet" "private-subnet-2" {
 # Интернет-шлюз для публичной подсети
 resource "yandex_vpc_gateway" "internet_gateway" {
   name = "internet-gateway"
+  shared_egress_gateway {}
 }
 
 # NAT-шлюз для приватных подсетей
@@ -72,3 +73,8 @@ resource "yandex_vpc_route_table" "private_rt" {
     gateway_id         = yandex_vpc_gateway.nat_gateway.id
   }
 }
+
+
+
+
+

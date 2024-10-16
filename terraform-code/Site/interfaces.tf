@@ -1,4 +1,3 @@
-
 # Сетевой интерфейс для Бастион-сервера (Внутренний)
 
 output "internal_ip_address_vm_1" {
@@ -21,4 +20,14 @@ output "internal_ip_address_vm_2" {
 
 output "internal_ip_address_vm_3" {
   value = yandex_compute_instance.vm-3.network_interface.0.ip_address
+}
+
+# Статический IP для бастион-сервера
+
+resource "yandex_vpc_address" "addr" {
+ name = "bastion-static-ip"
+ folder_id = "b1ggqllvlgv6k8ck45o1"
+ external_ipv4_address {
+   zone_id = "ru-central1-a"
+ }
 }

@@ -11,7 +11,7 @@ terraform {
 
 provider "yandex" {
   zone = "ru-central1-a"
-  service_account_key_file = "(Изменено)"
+  service_account_key_file = "/Users/bulatahmadeev/key.json"
   cloud_id                 = "(Изменено)"
   folder_id                = "(Изменено)"
 }

@@ -29,7 +29,7 @@ resource "yandex_vpc_security_group" "web_sg" {
     description      = "Allow SSH from bastion"
     protocol         = "TCP"
     port            = 22
-    v4_cidr_blocks   = ["${yandex_compute_instance.vm-1.network_interface.0.ip_address}/32"]  # Разрешаю вход по SSH только с Бастион - сервера
+    v4_cidr_blocks   = ["${yandex_compute_instance.vm-1.network_interface.0.ip_address}/32"]
   }
 
   # Разрешаем все исходящие соединения (если нужно)

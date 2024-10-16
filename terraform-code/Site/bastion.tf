@@ -14,9 +14,9 @@ resource "yandex_compute_instance" "vm-1" {
 
   # Ресурсы
   resources {
-    cores         = 2  # Два ядра
-    core_fraction = 5  # 5% мощности
-    memory        = 1  # 1 ГБ ОЗУ
+    cores         = 2
+    core_fraction = 5
+    memory        = 1
   }
 
   # Загрузочный диск
@@ -27,7 +27,8 @@ resource "yandex_compute_instance" "vm-1" {
   # Сетевые параметры
   network_interface {
     subnet_id = yandex_vpc_subnet.public-subnet.id
-    nat       = true  # Выход в интернет
+    nat       = true
+    nat_ip_address     = yandex_vpc_address.addr.external_ipv4_address[0].address  # Привязка статического IP
     security_group_ids = [yandex_vpc_security_group.bastion_sg.id] # Применение Security Group (bastion_sg) для Бастион-сервера
   }
 

@@ -1,0 +1,31 @@
+---
+- name: Add audit_user with sudo privileges and set SSH key
+  hosts: bastion, web-group
+  become: yes
+  vars:
+    user_name: "audit_user"
+    ssh_public_key: |
+      ssh-rsa (Изменено)== audit_user
+
+  tasks:
+    - name: Ensure the user {{ user_name }} exists
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        state: present
+        shell: /bin/bash
+        groups: sudo
+        append: yes
+        createhome: yes
+
+    - name: Set authorized key for the user {{ user_name }}
+      ansible.builtin.authorized_key:
+        user: "{{ user_name }}"
+        state: present
+        key: "{{ ssh_public_key }}"
+
+    - name: Allow {{ user_name }} to run sudo without password
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers
+        state: present
+        line: "{{ user_name }} ALL=(ALL) NOPASSWD:ALL"
+        validate: 'visudo -cf %s'
