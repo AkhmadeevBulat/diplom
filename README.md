@@ -11,3 +11,11 @@
 
 * [Сайт](Site.md);
 
+* [Мониторинг](Monitoring.md);
+
+* [Логи](Log.md);
+
+* [Данные для подключения](DataForAccessingServices.md);
+
+Для проверки моей работы нужно перейти в раздел [Данные для подключения](DataForAccessingServices.md).
+

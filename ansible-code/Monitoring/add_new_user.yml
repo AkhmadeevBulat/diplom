@@ -1,10 +1,10 @@
 ---
 - name: Add audit_user with sudo privileges and set SSH key
-  hosts: bastion, web-group
+  hosts: bastion, web-group, zabbix
   become: yes
   vars:
-    user_name: "audit_user"  # Такой пользователь будет использоваться для проверки работы
-    ssh_public_key: |  # Добавляю публичный ключ для этого пользователя
+    user_name: "audit_user"
+    ssh_public_key: |
       ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDmw4qr1ZbHFNNEHCfI6o/MSyF6Z9RTBuug4RY6Abtm2l1wu+8/VacpvJj1qQuqERPbXliYGuYroWLt8MbjFqDC81v5is9ODVimr7vPpqenhcqAcmi+zvNRQFyBWMyIZ4Np7aaJvxnlz3Ait3JtddPy6P5Si/OeF4j4OlrdzzFawLfnv8GdLzwwK0RH5Ov9cF/gKK+upi8+flZjN+/IUxMys4LYRdeRRkygqguKdxp2FyDm3BWneXoSvT+e5p9guSs/U0L2Rx6n0cILfFBPW6tXUxJo5XmJ7okNkhKx88O+N5B7i4Ve+EtyYam/ziQhQ15DH3zDHrpqj8M+fO2+bjLOfKFN5DpjN+rLpNKri+rNcbqxLerAJchdi8I/G5Vb+93EIUGEK252yAKM5EN3DAqJlLGh6kQRIEnZjZxRcS4kU/P91+nwaQqSIrA4VGB0MaBuxLMlLgR7QsiVIEJrNPrztdNPQjw9uJPCqOKzwLbpOMbtaQ2iA+yRHw/SRh8ALIKsutZy3HNtaPTeEcqgGyQAE4S66Pl0hAJMkY6VGAun2uSXQVMuKWif33SMOzzIzou/aTdue48ZhAwnzysghMdpdM63Rcs3C8KOjt4NGqDjrqRO3oK89b01Bgy6Zq4su99/gCUHQkYDuoLngwoCVlO7nBAvHOPz1J5GXqXp7oUwcQ== audit_user
 
   tasks:

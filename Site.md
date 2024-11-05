@@ -42,7 +42,7 @@
 
 Для удобства я также разделил код Terraform и Ansible на состовляющее, чтобы можно было легко и удобно править код. Объяснение в самом коде.
 
-Код Terraform:
+Код Terraform на момент выполнения раздела Сайт:
 
 * **[provider.tf](terraform-code/Site/provider.tf)** - Настройки провайдера;
 
@@ -861,7 +861,7 @@ ubuntu@web-1:~$
 
 ## Настройка NGINX с помощью Ansible
 
-Код Ansible:
+Код Ansible на момент выполнения раздела Сайт:
 
 * **[inventory_file](ansible-code/Site/inventory_file)** - Настройка подключения по группам хостов или по отдельным хостам
 

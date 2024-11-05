@@ -6,12 +6,12 @@ resource "yandex_alb_target_group" "target-group" {
 
   target {
     subnet_id    = yandex_vpc_subnet.private-subnet-1.id  # В этой подсети находится WEB-1
-    ip_address   = yandex_compute_instance.vm-2.network_interface.0.ip_address
+    ip_address   = yandex_compute_instance.vm-2.network_interface.0.ip_address  # Интерфейс сервера WEB-1
   }
 
   target {
     subnet_id    = yandex_vpc_subnet.private-subnet-2.id  # В этой подсети находится WEB-2
-    ip_address   = yandex_compute_instance.vm-3.network_interface.0.ip_address
+    ip_address   = yandex_compute_instance.vm-3.network_interface.0.ip_address  # Интерфейс сервера WEB-2
   }
 }
 
@@ -53,12 +53,12 @@ resource "yandex_alb_http_router" "http-router" {
 
 resource "yandex_alb_virtual_host" "virtual-host" {
   name                    = "virtual-host"
-  http_router_id          = yandex_alb_http_router.http-router.id
+  http_router_id          = yandex_alb_http_router.http-router.id  # Привязка к созданному HTTP-роутеру
   route {
     name                  = "route"
     http_route {
       http_route_action {
-        backend_group_id  = yandex_alb_backend_group.backend_group.id
+        backend_group_id  = yandex_alb_backend_group.backend_group.id  # Привязка к созданному Backend-группе
         timeout           = "1s"
       }
     }
@@ -69,7 +69,7 @@ resource "yandex_alb_virtual_host" "virtual-host" {
 
 resource "yandex_alb_load_balancer" "web_alb" {
   name       = "web-app-load-balancer"
-  network_id = yandex_vpc_network.network-1.id
+  network_id = yandex_vpc_network.network-1.id  # Привязка к созданной сети
 
   listener {
     name = "http-listener"
@@ -78,12 +78,12 @@ resource "yandex_alb_load_balancer" "web_alb" {
       address {
         external_ipv4_address {}
       }
-      ports = [80]
+      ports = [80]  # Слушает на порту 80
     }
 
     http {
       handler {
-        http_router_id = yandex_alb_http_router.http-router.id
+        http_router_id = yandex_alb_http_router.http-router.id  # ПРивязка к созданному HTTP-роутеру
       }
     }
   }

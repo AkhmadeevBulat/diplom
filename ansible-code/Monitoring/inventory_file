@@ -1,0 +1,15 @@
+[bastion]
+bastion ansible_host=89.169.154.248 ansible_user=ubuntu
+
+[web-group]
+web-1 ansible_host=web-1 ansible_user=ubuntu ansible_ssh_common_args='-o ProxyJump=bastion'
+web-2 ansible_host=web-2 ansible_user=ubuntu ansible_ssh_common_args='-o ProxyJump=bastion'
+
+[web-1]
+web-1 ansible_host=web-1 ansible_user=ubuntu ansible_ssh_common_args='-o ProxyJump=bastion'
+
+[web-2]
+web-2 ansible_host=web-2 ansible_user=ubuntu ansible_ssh_common_args='-o ProxyJump=bastion'
+
+[zabbix]
+zabbix ansible_host=zabbix ansible_user=ubuntu ansible_ssh_common_args='-o ProxyJump=bastion'
