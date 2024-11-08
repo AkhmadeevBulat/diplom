@@ -38,30 +38,6 @@
 
 ## Развертывание инфраструктуры
 
-Для удобства я разделил код Terraform и Ansible по разделам, чтобы можно было увидеть прогресс из раздела в раздел. В данном случае, для раздела ```"Сайт"``` - ```terraform-code/Site/``` и ```ansible-code/Site```.
-
-Для удобства я также разделил код Terraform и Ansible на состовляющее, чтобы можно было легко и удобно править код. Объяснение в самом коде.
-
-Код Terraform на момент выполнения раздела Сайт:
-
-* **[provider.tf](terraform-code/Site/provider.tf)** - Настройки провайдера;
-
-* **[boot-disk.tf](terraform-code/Site/boot-disk.tf)** - Настройки загрузочных дисков;
-
-* **[network.tf](terraform-code/Site/network.tf)** - Настройки сети;
-
-* **[interfaces.tf](terraform-code/Site/interfaces.tf)** - Настройки подключенных интерфесов;
-
-* **[firewall.tf](terraform-code/Site/firewall.tf)** - Настройки группы безопасности
-
-* **[bastion.tf](terraform-code/Site/bastion.tf)** - Настройки Бастион - сервера
-
-* **[web-1.tf](terraform-code/Site/web-1.tf)** - Настройки WEB - сервера 1
-
-* **[web-2.tf](terraform-code/Site/web-2.tf)** - Настройки WEB - сервера 2
-
-* **[app-load-balancer.tf](terraform-project/app-load-balancer.tf)** - Настройки Application Load Balancer'а
-
 Вывод команды ```terraform init```:
 
 ```
@@ -836,44 +812,6 @@ See "man sudo_root" for details.
 
 ubuntu@web-1:~$
 ```
-
-### Ниже показываю созданную инфраструктуру в Yandex Cloud.
-
-> ВАЖНО! IP - адреса могут различаться в картинках и в тексте, так как я создавал несколько раз машины.
-
-![alt text](<images/Снимок экрана 2024-10-02 в 19.12.07.png>)
-
-![alt text](<images/Снимок экрана 2024-10-02 в 19.12.52.png>)
-
-![alt text](<images/Снимок экрана 2024-10-02 в 19.13.36.png>)
-
-![alt text](<images/Снимок экрана 2024-10-02 в 19.14.07.png>)
-
-![alt text](<images/Снимок экрана 2024-10-02 в 19.14.40.png>)
-
-![alt text](<images/Снимок экрана 2024-10-02 в 19.15.02.png>)
-
-![alt text](<images/Снимок экрана 2024-10-02 в 19.15.30.png>)
-
-Чуть позже добавил Application Load Balancer через Terraform:
-
-![alt text](<images/Снимок экрана 2024-10-11 в 20.29.02.png>)
-
-## Настройка NGINX с помощью Ansible
-
-Код Ansible на момент выполнения раздела Сайт:
-
-* **[inventory_file](ansible-code/Site/inventory_file)** - Настройка подключения по группам хостов или по отдельным хостам
-
-* **[add_new_user.yml](ansible-code/Site/add_new_user.yml)** - Playbook для добавления нового пользователя (Этот пользователь будет использоваться для подключения проверяющим экспертом)
-
-* **[setup_nginx_for_web-1.yml](ansible-code/Site/setup_nginx_for_web-1.yml)** - Playbook для установки NGINX в web-1
-
-* **[setup_nginx_for_web-2.yml](ansible-code/Site/setup_nginx_for_web-2.yml)** - Playbook для установки NGINX в web-2
-
-* **[web1_template.html.j2](ansible-code/Site/web1_template.html.j2)** - Шаблон для web-1
-
-* **[web2_template.html.j2](ansible-code/Site/web2_template.html.j2)** - Шаблон для web-2
 
 Вывод работы Playbook'ов:
 

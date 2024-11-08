@@ -10,7 +10,7 @@
 
 ```
 Host bastion-audit
-    HostName 89.169.154.248
+    HostName 51.250.5.238
     User audit_user
     IdentityFile ~/.ssh/diplom-netology
 
@@ -47,7 +47,7 @@ Host kibana-audit
 
 ### Bastion сервер
 
-IP: ```89.169.154.248```
+IP: ```51.250.5.238```
 
 Логин: ```audit_user```
 
@@ -97,5 +97,5 @@ IP: ```kibana``` (Прыжок через Bastion-сервер)
 
 Логин: ```elastic```
 
-Пароль: ```TSOKoTuzUQVzhVBph2a1```
+Пароль: ```xd5=BSKQt_vIX9dc0bw7```
 

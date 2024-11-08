@@ -1,2 +1,14 @@
-terraform-project
-ansible-project
+# Terraform - служебные файлы
+
+terraform-project/key.json
+terraform-project/terraform.tfvars
+terraform-project/.terraform
+terraform-project/.terraform.lock.hcl
+terraform-project/terraform.tfstate
+terraform-project/terraform.tfstate.backup
+
+# Ansible - Неиспользованные файлы
+
+ansible-project/docker/docker-compose-elasticsearch.yml
+ansible-project/docker/docker-compose-kibana.yml
+ansible-project/SSH-KEY

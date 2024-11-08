@@ -1,0 +1,25 @@
+---
+- name: Установка NGINX на ВЕБ-сервера
+  hosts: web-group
+  become: true
+
+  tasks:
+    - name: Обновление списка пакетов
+      apt:
+        update_cache: yes
+
+    - name: Установка NGINX
+      apt:
+        name: nginx
+        state: present
+
+    - name: Запуск NGINX сервиса
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Добавление шаблона
+      template:
+        src: web_template.html.j2
+        dest: /var/www/html/index.html

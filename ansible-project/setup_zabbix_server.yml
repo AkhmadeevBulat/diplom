@@ -1,0 +1,55 @@
+---
+- name: Установка Docker, Docker Compose и запуск Zabbix-server, Zabbix-web и PostgreSQL через docker-compose
+  hosts: zabbix
+  become: yes
+  tasks:
+
+    - name: Обновление списка пакетов
+      apt:
+        update_cache: yes
+
+    - name: Установка необходимых пакетов
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+
+    - name: Добавление GPG ключа Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Добавление репозитория Docker
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+        state: present
+
+    - name: Установка Docker
+      apt:
+        name: docker-ce
+        state: present
+        update_cache: yes
+
+    - name: Запуск и включение Docker
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Создание каталогов для конфигурационных файлов
+      file:
+        path: /home/{{ ansible_user }}/zabbix
+        state: directory
+
+    - name: Копирование docker-compose.yml на сервер
+      copy:
+        src: docker/docker-compose-zabbix.yml
+        dest: /home/{{ ansible_user }}/zabbix/docker-compose-zabbix.yml
+
+    - name: Запуск docker-compose
+      command: docker compose -f /home/{{ ansible_user }}/zabbix/docker-compose-zabbix.yml up -d
+      args:
+        chdir: /home/{{ ansible_user }}/zabbix/  # Папка, в которой находится docker-compose.yml
