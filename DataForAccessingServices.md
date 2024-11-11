@@ -87,9 +87,9 @@ IP: ```kibana``` (Прыжок через Bastion-сервер)
 
 ### WEB - страница Zabbix сервера доступна по адресу: ```http://51.250.38.56:8080```.
 
-Логин: ```user-audit```
+Логин: ```Admin```
 
-Пароль: ```quQkuh-kitham-tenci5```
+Пароль: ```xonda4-kizher-bemkaP```
 
 Ссылка для доступа в телеграм канал (В который приходит Alert'ы от Zabbix): ```https://t.me/+2yeObuZ44j1kODgy```
 
