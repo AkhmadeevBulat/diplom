@@ -89,7 +89,7 @@ IP: ```kibana``` (Прыжок через Bastion-сервер)
 
 Логин: ```user-audit```
 
-Пароль: ```cohmyq-jukto3-rYfbym```
+Пароль: ```quQkuh-kitham-tenci5```
 
 Ссылка для доступа в телеграм канал (В который приходит Alert'ы от Zabbix): ```https://t.me/+2yeObuZ44j1kODgy```
 
